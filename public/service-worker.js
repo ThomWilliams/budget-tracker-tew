@@ -40,4 +40,27 @@ self.addEventListener("install", function (evt) {
     self.clients.claim();
   });
 
-  
+
+
+  // RESPONSE / FETCH
+
+  self.addEventListener('fetch', (evt) => {
+    if (evt.request.url.startsWith(self.location.origin)) {
+        evt.respondWith(
+          caches.match(evt.request).then((cachedResponse) => {
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+    
+            return caches.open(CACHE_NAME).then((cache) => {
+              return fetch(evt.request).then((response) => {
+                return cache.put(evt.request, response.clone()).then(() => {
+                  return response;
+                });
+              });
+            });
+          })
+        );
+      }
+
+  })
