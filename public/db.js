@@ -9,7 +9,7 @@ let db;
 
 const request = indexedDB.open("budget", 1);
 
-// UPGRADE ONE REQUEST
+// UPGRADE ON REQUEST
 request.onupgradeneeded = ({ target }) => {
   console.log("Upgrade IndexDB");
 
@@ -21,15 +21,17 @@ request.onupgradeneeded = ({ target }) => {
   db = target.result;
 
   if (db.objectStoreNames.length === 0) {
-    db.createObjectStore("BudgetTracker", { autoIncrement: true });
+    db.createObjectStore("BudgetStore", { autoIncrement: true });
   }
 };
 
 // SUCCESS REQUEST
 
 request.onsuccess = ({ target }) => {
-
-    
+    db = request.result;
+    tx = db.transaction("BudgetStore", "readWrite")
+    store = tx.objectStore("BudgetStore")
+    console.log(target, "Request Successful!")
 };
 
 // ERROR REQUEST
