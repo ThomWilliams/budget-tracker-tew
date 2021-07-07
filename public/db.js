@@ -33,7 +33,9 @@ request.onsuccess = ({ target }) => {
 };
 
 // ERROR REQUEST
-request.onerror = function (event) {};
+request.onerror = function (event) {
+    console.log(`Error processing request! ${event.target.errorCode}`);
+};
 
 // SAVE RECORD
 
