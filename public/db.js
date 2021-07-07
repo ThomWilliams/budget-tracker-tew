@@ -26,7 +26,6 @@ request.onupgradeneeded = ({ target }) => {
 };
 
 // SUCCESS REQUEST
-
 request.onsuccess = ({ target }) => {
     db = request.result;
     tx = db.transaction("BudgetStore", "readWrite")
@@ -40,11 +39,20 @@ request.onerror = function (event) {
 };
 
 // SAVE RECORD
-
-function saveRecord(record) {}
+function saveRecord(record) {
+    console.log('Save record invoked');
+    // Create transaction on BudgetStore db
+  const transaction = db.transaction(['BudgetStore'], 'readwrite');
+  // Access to BudgetStore object store
+  const store = transaction.objectStore('BudgetStore');
+  // Add record to store 
+  store.add(record);
+}
 
 // CHECK DATABASE
 
-function checkDatabase() {}
+function checkDatabase() {
+    
+}
 
 window.addEventListener("online", checkDatabase);
