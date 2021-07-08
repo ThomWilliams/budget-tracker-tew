@@ -13,16 +13,16 @@ const request = indexedDB.open("budget", 1);
 request.onupgradeneeded = ({ target }) => {
   console.log("Upgrade IndexDB");
 
-  const { olderVersion } = e;
-  const newerVersion = e.newerVersion || db.version;
+  // const { olderVersion } = e;
+  // const newerVersion = e.newerVersion || db.version;
 
-  console.log(`Index DB Updated from previous version ${olderVersion} to new version ${newerVersion}`);
+  // console.log(`Index DB Updated from previous version ${olderVersion} to new version ${newerVersion}`);
 
-  db = target.result;
+  // db = target.result;
 
-  if (db.objectStoreNames.length === 0) {
-    db.createObjectStore("BudgetStore", { autoIncrement: true });
-  }
+  // if (db.objectStoreNames.length === 0) {
+  //   db.createObjectStore("BudgetStore", { autoIncrement: true });
+  // }
 };
 
 // SUCCESS REQUEST
@@ -31,6 +31,7 @@ request.onsuccess = ({ target }) => {
     tx = db.transaction("BudgetStore", "readWrite")
     store = tx.objectStore("BudgetStore")
     console.log(target, "Request Successful!")
+    saveRecord();
 };
 
 // request.onsuccess = function (e) {
