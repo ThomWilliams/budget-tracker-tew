@@ -7,7 +7,7 @@ const indexedDB =
 
 let db;
 
-const request = indexedDB.open("budget", 1);
+const request = indexedDB.open("BudgetStore", 1);
 
 // UPGRADE ON REQUEST
 request.onupgradeneeded = ({ target }) => {
