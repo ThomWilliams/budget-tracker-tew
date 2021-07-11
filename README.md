@@ -64,8 +64,11 @@ thomwilliams1990@gmail.com
 
 ## Screenshots
 
-![Dashboard](public/images/budget-tracker-tew.png)
+![Homepage](public/images/budget-tracker-tew.png)
 
+![Downloaded App Offline vs Online](public/images/budget-tracker-tew.png)
+
+![Downloaded App Online + Browser in Sync](public/images/budget-tracker-tew.png)
 
 ## Deployment / Links
 
