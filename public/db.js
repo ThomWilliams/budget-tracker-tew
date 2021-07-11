@@ -14,17 +14,6 @@ request.onupgradeneeded = ({ target }) => {
   console.log("Upgrade IndexDB");
   db = target.result;
   db.createObjectStore("BudgetStore", { autoIncrement: true });
-
-  // const { olderVersion } = e;
-  // const newerVersion = e.newerVersion || db.version;
-
-  // console.log(`Index DB Updated from previous version ${olderVersion} to new version ${newerVersion}`);
-
-  // db = target.result;
-
-  // if (db.objectStoreNames.length === 0) {
-  //   db.createObjectStore("BudgetStore", { autoIncrement: true });
-  // }
 };
 
 // SUCCESS REQUEST
@@ -35,16 +24,7 @@ request.onsuccess = ({ target }) => {
     console.log("Backend online!");
     checkLiveDatabase();
   }
-
 };
-
-// request.onsuccess = function (e) {
-//     console.log('success');
-//     db = e.target.result;
-
-//     // Check if app is online before reading from db
-//
-//   };
 
 // ERROR REQUEST
 request.onerror = function (event) {
