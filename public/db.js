@@ -72,7 +72,7 @@ function checkLiveDatabase() {
   // If the request was successful
   getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
-      fetch("/api/transaction/bulk", {
+      fetch("/api/transactions/bulk", {
         method: "POST",
         body: JSON.stringify(getAll.result),
         headers: {
